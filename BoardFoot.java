@@ -1,5 +1,3 @@
-// A Java program to demonstrate random number generation
-// using java.util.Random;
 import java.util.Scanner;
 /**
 * Calculate the length of the user's board foot.
@@ -46,22 +44,31 @@ public final class BoardFoot {
         final Scanner scanner = new Scanner(System.in);
 
         try {
-
+            // Ask user for the height.
             System.out.println("Enter the height in inches:");
-
+            // Get the input and convert it to a double.
             final String userHeight = scanner.nextLine();
             final double heightAsDouble = Double.parseDouble(userHeight);
-
+            // Ask user for the height.
             System.out.println("Enter the width in inches:");
+            // Get the input and convert it to a double.
             final String userWidth = scanner.nextLine();
             final double widthAsDouble = Double.parseDouble(userWidth);
 
-            // call the function to calculate the length.
-            final double length =
-                calculateLength(widthAsDouble, heightAsDouble);
+            // This if statement checks for positive input.
+            if (widthAsDouble > 0 && heightAsDouble > 0) {
 
-            // Display the length
-            System.out.println("The length is " + length + " inches.");
+                // call the function to calculate the length.
+                final double length =
+                    calculateLength(widthAsDouble, heightAsDouble);
+
+                // Display the length
+                System.out.println("The length is "
+                    + String.format("%.3f", length) + " inches.");
+            } else {
+                // Print when user enters invalid input.
+                System.out.println("This is not a valid input.");
+            }
         } catch (NumberFormatException error) {
             System.out.println("Please enter a valid value!"
                 + error.getMessage());
